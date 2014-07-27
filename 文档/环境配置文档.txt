@@ -1,0 +1,5 @@
+1,安装git
+2,申请github账号
+3,安装nodejs    http://www.nodejs.org/
+4,安装express   http://expressjs.jser.us/guide.html
+5,安装socket.io
