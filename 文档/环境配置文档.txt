@@ -3,3 +3,4 @@
 3,安装nodejs    http://www.nodejs.org/
 4,安装express   http://expressjs.jser.us/guide.html
 5,安装socket.io
+6,安装supervisor
