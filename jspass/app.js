@@ -20,7 +20,7 @@ app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser('keyboard cat'));
 // 设置 Session
 app.use(session({
     store: new RedisStore({
@@ -29,7 +29,11 @@ app.use(session({
         db: "0",
         prefix: "user-"
     }),
-    secret: 'keyboard cat'
+    secret: 'keyboard cat',
+    cookie:{
+        originalMaxAge: 6000,
+        maxAge: 6000
+    }
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
