@@ -4,3 +4,8 @@
 4,安装express   http://expressjs.jser.us/guide.html
 5,安装socket.io
 6,安装supervisor
+
+部署相关
+1，grunt  http://blog.fens.me/nodejs-grunt-intro/
+a,npm install -g grunt-cli
+b,npm install -g grunt

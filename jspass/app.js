@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 
+var config = require('./configure.js');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -35,8 +36,20 @@ app.use(session({
         maxAge: 6000
     }
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 
+//把user从session中读取出来，然后设置到res的locals中去
+app.use(function(req, res, next) {
+    var session = req.session,
+        user = session.user;
+    if(user){
+        res.locals.user =  user;
+    }
+    console.log('user:');
+    console.log(user);
+    console.log('name:' + user.name);
+    next();
+});
 app.use('/', routes);
 app.use('/users', users);
 
@@ -44,6 +57,7 @@ app.use('/users', users);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
+    console.log('404');
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -66,6 +80,7 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+    console.log('500');
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
