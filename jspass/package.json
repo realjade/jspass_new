@@ -16,7 +16,8 @@
         "redis": "*",
         "connect-redis": "~2.0.0",
         "express-session": "*",
-        "socket.io": "*"
+        "socket.io": "*",
+        "mysql": "*"
     },
     "devDependencies": {
         "grunt": "~0.4.5",

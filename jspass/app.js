@@ -46,6 +46,9 @@ app.use(function(req, res, next) {
     }
     next();
 });
+
+
+
 app.use('/', routes);
 app.use('/course', course);
 app.use('/users', users);
